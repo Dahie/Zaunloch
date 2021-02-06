@@ -1,0 +1,22 @@
+%h1 Home#index
+%p Find me in app/views/home/index.html.erb
+
+- unless current_user
+  %p= link_to 'Sign up', new_user_registration_path
+  %p= link_to 'Sign in', new_user_session_path
+- else
+  - unless current_user.evernote_token
+    %p
+      = link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui huge button primary'
+  - else
+    Connected with evernote
+
+  %p= link_to 'Sign out', destroy_user_session_path
+
+outside of session:
+= link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui huge button primary'
+
+
+
+%button.btn.btn-secondary{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Tooltip on top", :type => "button"}
+  Tooltip on top
