@@ -7,8 +7,6 @@
 - else
   - unless current_user.evernote_token
     %p
-      = Rails.application.config_for(:evernote).with_indifferent_access
-    %p
       = link_to t('.login_with_evernote', provider: t("omniauth.providers.evernote")), user_evernote_omniauth_authorize_path, class: 'ui huge button primary'
   - else
     Connected with evernote
